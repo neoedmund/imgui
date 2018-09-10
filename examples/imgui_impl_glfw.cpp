@@ -154,7 +154,8 @@ void ImGui_ImplGlfw_CharCallback(GLFWwindow*, unsigned int c)
     printf("c2:%lc\n", c);
     //AddInputCharactersUTF8
     //if (c > 0 && c < 0x10000)
-        io.AddInputCharactersUTF8(get_character_string(c));
+    io.AddInputCharacter(c);
+    //io.AddInputCharactersUTF8(get_character_string(c));
 }
 
 void ImGui_ImplGlfw_InstallCallbacks(GLFWwindow* window)

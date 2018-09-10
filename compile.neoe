@@ -1,12 +1,13 @@
 g++ *.cpp examples/example_sdl_vulkan/main.cpp examples/imgui_impl_vulkan.cpp examples/imgui_impl_sdl.cpp -lm  -I. -Iexamples -lSDL2 -lvulkan
-g++ *.cpp examples/example_sdl_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_sdl.cpp -lm  -I. -Iexamples -lSDL2 -lopengl3
-g++ *.cpp examples/example_sdl_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_sdl.cpp gl3w.o  -lm  -I. -Iexamples -lSDL2  -Iexamples/libs/gl3w
 
 gcc -c examples/libs/gl3w/GL/gl3w.c -Iexamples/libs/gl3w
 
-g++ *.cpp examples/example_sdl_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_sdl.cpp gl3w.o  -lm  -I. -Iexamples -lSDL2  -Iexamples/libs/gl3w -ldl -lGL
+g++ *.cpp examples/example_sdl_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_sdl.cpp gl3w.o  -lm  -I. -Iexamples -L -lSDL2  -Iexamples/libs/gl3w -ldl -lGL
 g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.o  -lm  -I. -Iexamples   -Iexamples/libs/gl3w -ldl -lGL
 
+g++ *.cpp examples/example_sdl_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_sdl.cpp gl3w.o  /g/neoe/oss/SDL2-2.0.8/build/libSDL2.a  -lm  -I. -Iexamples -Iexamples/libs/gl3w -I/g/neoe/oss/SDL2-2.0.8/include -ldl -lGL -lpthread
+
+/usr/bin/x86_64-w64-mingw32-g++ *.cpp examples/example_sdl_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_sdl.cpp  gl3w.ow /g/neoe/oss/SDL2-2.0.8/x86_64-w64-mingw32/lib/libSDL2.a  -I. -Iexamples -Iexamples/libs/gl3w   -I/g/neoe/oss/SDL2-2.0.8/include  -lmingw32   -mwindows  -lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lversion -luuid -static-libgcc  -lopengl32  -mwindows -lmingw32 -o a_sdl.exe
 
 #g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.o /g/neoe/oss/glfw-1/build/src/libglfw3.a -lm  -I. -Iexamples   -Iexamples/libs/gl3w -ldl -lGL -lX11 -lpthread -lXxf86vm -lXrandr -lXi -lXcursor -lXinerama
 g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.o /g/neoe/oss/glfw-1/build/src/libglfw3.a -lm  -I. -Iexamples -I/g/neoe/oss/glfw-1/include  -Iexamples/libs/gl3w -ldl -lGL -lX11 -lpthread -lXxf86vm -lXrandr -lXi -lXcursor -lXinerama

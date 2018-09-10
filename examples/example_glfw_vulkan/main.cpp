@@ -6,6 +6,8 @@
 #include "imgui_impl_vulkan.h"
 #include <stdio.h>          // printf, fprintf
 #include <stdlib.h>         // abort
+#include <locale.h>
+
 #define GLFW_INCLUDE_NONE
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
@@ -313,6 +315,7 @@ static void glfw_resize_callback(GLFWwindow*, int w, int h)
 
 int main(int, char**)
 {
+	setlocale(LC_ALL, "");
 	// Setup window
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
@@ -384,7 +387,7 @@ int main(int, char**)
     //io.Fonts->AddFontFromFileTTF("../../misc/fonts/ProggyTiny.ttf", 10.0f);
     //ImFont* font = io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\ArialUni.ttf", 18.0f, NULL, io.Fonts->GetGlyphRangesJapanese());
     //IM_ASSERT(font != NULL);
-
+	io.Fonts->AddFontFromFileTTF("NotoSansCJK-Regular.ttc",16.0f,NULL,io.Fonts->GetGlyphRangesChineseFull());
     // Upload Fonts
     {
         // Use any command queue

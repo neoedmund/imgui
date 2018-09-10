@@ -1,19 +1,25 @@
 g++ *.cpp examples/example_sdl_vulkan/main.cpp examples/imgui_impl_vulkan.cpp examples/imgui_impl_sdl.cpp -lm  -I. -Iexamples -lSDL2 -lvulkan
 g++ *.cpp examples/example_sdl_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_sdl.cpp -lm  -I. -Iexamples -lSDL2 -lopengl3
-g++ *.cpp examples/example_sdl_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_sdl.cpp gl3w.o  -lm  -I. -Iexamples -lSDL2  -Iexamples/libs/gl3w 
+g++ *.cpp examples/example_sdl_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_sdl.cpp gl3w.o  -lm  -I. -Iexamples -lSDL2  -Iexamples/libs/gl3w
 
-gcc -c examples/libs/gl3w/GL/gl3w.c -Iexamples/libs/gl3w 
+gcc -c examples/libs/gl3w/GL/gl3w.c -Iexamples/libs/gl3w
 
 g++ *.cpp examples/example_sdl_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_sdl.cpp gl3w.o  -lm  -I. -Iexamples -lSDL2  -Iexamples/libs/gl3w -ldl -lGL
 g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.o  -lm  -I. -Iexamples   -Iexamples/libs/gl3w -ldl -lGL
 
 
-g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.o /g/neoe/oss/glfw-1/build/src/libglfw3.a -lm  -I. -Iexamples   -Iexamples/libs/gl3w -ldl -lGL -lX11 -lpthread -lXxf86vm -lXrandr -lXi -lXcursor -lXinerama
+#g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.o /g/neoe/oss/glfw-1/build/src/libglfw3.a -lm  -I. -Iexamples   -Iexamples/libs/gl3w -ldl -lGL -lX11 -lpthread -lXxf86vm -lXrandr -lXi -lXcursor -lXinerama
 g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.o /g/neoe/oss/glfw-1/build/src/libglfw3.a -lm  -I. -Iexamples -I/g/neoe/oss/glfw-1/include  -Iexamples/libs/gl3w -ldl -lGL -lX11 -lpthread -lXxf86vm -lXrandr -lXi -lXcursor -lXinerama
 /g/neoe/oss/glfw-1/build/test3.c
 /d/neoe/oss/glfw/build
 
+# cmake -DCMAKE_TOOLCHAIN_FILE=CMake/x86_64-w64-mingw32.cmake ..
+ 
+/usr/bin/x86_64-w64-mingw32-gcc  -c examples/libs/gl3w/GL/gl3w.c -Iexamples/libs/gl3w  -o gl3w.ow
+/usr/bin/x86_64-w64-mingw32-g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.ow /g/neoe/oss/glfw-1/buildw64/src/libglfw3.a -lm  -I. -Iexamples -I/g/neoe/oss/glfw-1/include  -Iexamples/libs/gl3w   -limm32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lopengl32
 
-/usr/bin/x86_64-w64-mingw32-gcc  -c examples/libs/gl3w/GL/gl3w.c -Iexamples/libs/gl3w 
-/usr/bin/x86_64-w64-mingw32-g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.o /g/neoe/oss/glfw-1/buildw64/src/libglfw3.a -lm  -I. -Iexamples -I/g/neoe/oss/glfw-1/include  -Iexamples/libs/gl3w   -limm32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lopengl32
-      
+g++ *.cpp examples/example_glfw_vulkan/main.cpp examples/imgui_impl_vulkan.cpp examples/imgui_impl_glfw.cpp   /g/neoe/oss/glfw-1/build/src/libglfw3.a -lm  -I. -Iexamples -I/g/neoe/oss/glfw-1/include -I/g/neoe/oss/vulkan/1.1.82.1/x86_64/include/ -L/g/neoe/oss/vulkan/1.1.82.1/x86_64/lib -ldl -lvulkan  -lX11 -lpthread -lXxf86vm -lXrandr -lXi -lXcursor -lXinerama 
+
+
+/usr/bin/x86_64-w64-mingw32-g++ *.cpp examples/example_glfw_vulkan/main.cpp examples/imgui_impl_vulkan.cpp examples/imgui_impl_glfw.cpp   /g/neoe/oss/glfw-1/build/src/libglfw3.a -lm  -I. -Iexamples -I/g/neoe/oss/glfw-1/include -I/g/neoe/oss/vulkan/1.1.82.1/x86_64/include/ -L/g/neoe/oss/vulkan/1.1.82.1/x86_64/lib  -lvulkan-1   -limm32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+

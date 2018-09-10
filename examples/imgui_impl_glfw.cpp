@@ -163,8 +163,8 @@ void ImGui_ImplGlfw_InstallCallbacks(GLFWwindow* window)
     glfwSetScrollCallback(window, ImGui_ImplGlfw_ScrollCallback);
     glfwSetKeyCallback(window, ImGui_ImplGlfw_KeyCallback);
     glfwSetCharCallback(window, ImGui_ImplGlfw_CharCallback);
-    //   glfwSetPreeditCallback(window, preedit_callback);
-    //   glfwSetIMEStatusCallback(window, ime_callback);
+    glfwSetPreeditCallback(window, preedit_callback);
+    glfwSetIMEStatusCallback(window, ime_callback);
 }
 
 static bool ImGui_ImplGlfw_Init(GLFWwindow* window, bool install_callbacks, GlfwClientApi client_api)

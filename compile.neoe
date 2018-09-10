@@ -8,10 +8,12 @@ g++ *.cpp examples/example_sdl_opengl3/main.cpp examples/imgui_impl_opengl3.cpp 
 g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.o  -lm  -I. -Iexamples   -Iexamples/libs/gl3w -ldl -lGL
 
 
-g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.o /d/neoe/oss/glfw/build/src/libglfw3.a -lm  -I. -Iexamples   -Iexamples/libs/gl3w -ldl -lGL -lX11 -lpthread -lXxf86vm -lXrandr -lXi -lXcursor -lXinerama
-g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.o /home/neoe/oss/glfw-1/build/src/libglfw3.a -lm  -I. -Iexamples -I/home/neoe/oss/glfw-1/include  -Iexamples/libs/gl3w -ldl -lGL -lX11 -lpthread -lXxf86vm -lXrandr -lXi -lXcursor -lXinerama
-/home/neoe/oss/glfw-1/build/test3.c
+g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.o /g/neoe/oss/glfw-1/build/src/libglfw3.a -lm  -I. -Iexamples   -Iexamples/libs/gl3w -ldl -lGL -lX11 -lpthread -lXxf86vm -lXrandr -lXi -lXcursor -lXinerama
+g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.o /g/neoe/oss/glfw-1/build/src/libglfw3.a -lm  -I. -Iexamples -I/g/neoe/oss/glfw-1/include  -Iexamples/libs/gl3w -ldl -lGL -lX11 -lpthread -lXxf86vm -lXrandr -lXi -lXcursor -lXinerama
+/g/neoe/oss/glfw-1/build/test3.c
 /d/neoe/oss/glfw/build
 
-      
+
+/usr/bin/x86_64-w64-mingw32-gcc  -c examples/libs/gl3w/GL/gl3w.c -Iexamples/libs/gl3w 
+/usr/bin/x86_64-w64-mingw32-g++ *.cpp examples/example_glfw_opengl3/main.cpp examples/imgui_impl_opengl3.cpp examples/imgui_impl_glfw.cpp gl3w.o /g/neoe/oss/glfw-1/buildw64/src/libglfw3.a -lm  -I. -Iexamples -I/g/neoe/oss/glfw-1/include  -Iexamples/libs/gl3w   -limm32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lopengl32
       

@@ -104,7 +104,8 @@ int main(int, char**)
     //IM_ASSERT(font != NULL);
     io.Fonts->AddFontFromFileTTF(
 	    // "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc",
-	    "/usr/share/fonts/truetype/wqy/wqy-microhei.ttc",
+	    "NotoSansCJK-Regular.ttc",
+	    //"/usr/share/fonts/truetype/wqy/wqy-microhei.ttc",
 	    16.0f,NULL,io.Fonts->GetGlyphRangesChineseFull());// io.Fonts->GetGlyphRangesChineseFull());
 
     bool show_demo_window = true;

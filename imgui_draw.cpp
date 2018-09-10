@@ -2056,8 +2056,8 @@ const ImWchar*  ImFontAtlas::GetGlyphRangesChineseFull()
         0x0020, 0x00FF, // Basic Latin + Latin Supplement
         0x3000, 0x30FF, // Punctuations, Hiragana, Katakana
         0x31F0, 0x31FF, // Katakana Phonetic Extensions
-        0xFF00, 0xFFEF, // Half-width characters
         0x4e00, 0x9FAF, // CJK Ideograms
+        0xFF00, 0xFFEF, // Half-width characters
         0,
     };
     return &ranges[0];

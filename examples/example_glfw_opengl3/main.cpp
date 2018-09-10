@@ -6,6 +6,7 @@
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include <stdio.h>
+#include <locale.h>
 
 // About OpenGL function loaders: modern OpenGL doesn't have a standard header file and requires individual function pointers to be loaded manually. 
 // Helper libraries are often used for this purpose! Here we are supporting a few common ones: gl3w, glew, glad.
@@ -29,6 +30,7 @@ static void glfw_error_callback(int error, const char* description)
 
 int main(int, char**)
 {
+	 setlocale(LC_ALL, "");
     // Setup window
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
@@ -100,6 +102,10 @@ int main(int, char**)
     //io.Fonts->AddFontFromFileTTF("../../misc/fonts/ProggyTiny.ttf", 10.0f);
     //ImFont* font = io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\ArialUni.ttf", 18.0f, NULL, io.Fonts->GetGlyphRangesJapanese());
     //IM_ASSERT(font != NULL);
+    io.Fonts->AddFontFromFileTTF(
+	    // "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc",
+	    "/usr/share/fonts/truetype/wqy/wqy-microhei.ttc",
+	    16.0f,NULL,io.Fonts->GetGlyphRangesChineseFull());// io.Fonts->GetGlyphRangesChineseFull());
 
     bool show_demo_window = true;
     bool show_another_window = false;

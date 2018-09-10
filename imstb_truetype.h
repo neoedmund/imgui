@@ -3160,11 +3160,14 @@ static void stbtt__rasterize_sorted_edges(stbtt__bitmap *result, stbtt__edge *e,
       while (e->y0 <= scan_y_bottom) {
          if (e->y0 != e->y1) {
             stbtt__active_edge *z = stbtt__new_active(&hh, e, off_x, scan_y_top, userdata);
-            if (z != NULL) {
-               STBTT_assert(z->ey >= scan_y_top);
-               // insert at front
-               z->next = active;
-               active = z;
+           if (z != NULL) {
+               if (z->ey >= scan_y_top) {
+                  // insert at front
+                  z->next = active;
+                  active = z;
+               } else{
+               printf("[f]%f , %f \n",z->ey, scan_y_top);
+               }
             }
          }
          ++e;

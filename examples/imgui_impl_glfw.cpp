@@ -28,6 +28,10 @@
 //  2017-08-25: Inputs: MousePos set to -FLT_MAX,-FLT_MAX when mouse is unavailable/missing (instead of -1,-1).
 //  2016-10-15: Misc: Added a void* user_data parameter to Clipboard function handlers.
 
+#include <stdio.h>
+#include <stdlib.h>
+
+
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 
@@ -95,11 +99,62 @@ void ImGui_ImplGlfw_KeyCallback(GLFWwindow*, int key, int, int action, int mods)
     io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
 }
 
+static const char* get_character_string(int codepoint)
+{
+    // This assumes UTF-8, which is stupid
+    static char result[6 + 1];
+
+    int length = wctomb(result, codepoint);
+    if (length == -1)
+        length = 0;
+
+    result[length] = '\0';
+    return result;
+}
+
+
+static void preedit_callback(GLFWwindow* window, int strLength, unsigned int* string, int blockLength, int* blocks, int focusedBlock) {
+    int i, blockIndex = -1, blockCount = 0;
+    int width, height;
+    printf("  Preedit text ");
+    if (strLength == 0 || blockLength == 0) {
+        printf("(empty)\n");
+    } else {
+    	 printf("%d:", strLength);
+        for (i = 0; i < strLength; i++) {
+            if (blockCount == 0) {
+                if (blockIndex == focusedBlock) {
+                    printf("]");
+                }
+                blockIndex++;
+                blockCount = blocks[blockIndex];
+                printf("\n   block %d: ", blockIndex);
+                if (blockIndex == focusedBlock) {
+                    printf("[");
+                }
+            }
+            printf("%lc[%d]",string[i],string[i]); //get_character_string(string[i]));
+            blockCount--;
+        }
+        if (blockIndex == focusedBlock) {
+            printf("]");
+        }
+        printf("\n");
+        glfwGetWindowSize(window, &width, &height);
+    }
+}
+
+static void ime_callback(GLFWwindow* window) {
+    printf(" IME switched\n");
+}
+
 void ImGui_ImplGlfw_CharCallback(GLFWwindow*, unsigned int c)
 {
     ImGuiIO& io = ImGui::GetIO();
-    if (c > 0 && c < 0x10000)
-        io.AddInputCharacter((unsigned short)c);
+    printf("c2:%lc\n", c);
+    //AddInputCharactersUTF8
+    //if (c > 0 && c < 0x10000)
+        io.AddInputCharactersUTF8(get_character_string(c));
 }
 
 void ImGui_ImplGlfw_InstallCallbacks(GLFWwindow* window)
@@ -108,6 +163,8 @@ void ImGui_ImplGlfw_InstallCallbacks(GLFWwindow* window)
     glfwSetScrollCallback(window, ImGui_ImplGlfw_ScrollCallback);
     glfwSetKeyCallback(window, ImGui_ImplGlfw_KeyCallback);
     glfwSetCharCallback(window, ImGui_ImplGlfw_CharCallback);
+    //   glfwSetPreeditCallback(window, preedit_callback);
+    //   glfwSetIMEStatusCallback(window, ime_callback);
 }
 
 static bool ImGui_ImplGlfw_Init(GLFWwindow* window, bool install_callbacks, GlfwClientApi client_api)
